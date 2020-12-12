@@ -1,0 +1,72 @@
+<div class="container">
+
+    <div class="row mat-elevation-z8">
+
+        <div class="spinner-container" *ngIf="dataSource.loading$ | async">
+          <mat-spinner></mat-spinner>
+        </div>
+      
+        <mat-table class="lessons-table mat-elevation-z8" [dataSource]="dataSource">
+      
+         
+      
+          <ng-container matColumnDef="program">
+              <mat-header-cell *matHeaderCellDef>Program</mat-header-cell>
+              <mat-cell class="name-cell"
+                        *matCellDef="let semester">{{semester.program.name}}</mat-cell>
+      
+          </ng-container>
+
+          <ng-container matColumnDef="country">
+            <mat-header-cell *matHeaderCellDef>Country</mat-header-cell>
+            <mat-cell class="name-cell"
+                      *matCellDef="let semester">{{semester.program.university.city.province.country.name}}</mat-cell>
+    
+          </ng-container>
+
+          <ng-container matColumnDef="province">
+            <mat-header-cell *matHeaderCellDef>Province</mat-header-cell>
+            <mat-cell class="name-cell"
+                      *matCellDef="let semester">{{semester.program.university.city.province.name}}</mat-cell>
+    
+          </ng-container>
+
+          <ng-container matColumnDef="city">
+            <mat-header-cell *matHeaderCellDef>City</mat-header-cell>
+            <mat-cell class="name-cell"
+                      *matCellDef="let semester">{{semester.program.university.city.name}}</mat-cell>
+    
+          </ng-container>
+
+          <ng-container matColumnDef="university">
+            <mat-header-cell *matHeaderCellDef>University</mat-header-cell>
+            <mat-cell class="name-cell"
+                      *matCellDef="let semester">{{semester.program.university.name}}</mat-cell>
+    
+          </ng-container>
+
+          <ng-container matColumnDef="deadline">
+            <mat-header-cell *matHeaderCellDef>Deadline</mat-header-cell>
+            <mat-cell class="name-cell"
+                      *matCellDef="let semester">{{semester.deadline   | date: "MMM d"}}</mat-cell>
+    
+          </ng-container>
+      
+          <ng-container matColumnDef="season">
+            <mat-header-cell *matHeaderCellDef>Season</mat-header-cell>
+            <mat-cell class="name-cell"
+                      *matCellDef="let semester">{{semester.season}}</mat-cell>
+    
+          </ng-container>
+      
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      
+          <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+      
+        </mat-table>
+        
+        <mat-paginator [length]="8" [pageSize]="5"
+        [pageSizeOptions]="[3, 5, 10]"></mat-paginator>
+        
+        </div>
+</div>

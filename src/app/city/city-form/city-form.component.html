@@ -1,0 +1,20 @@
+<div class="container">
+    <h2>Add City</h2>
+    <form (ngSubmit)="onSubmit()" #cityForm="ngForm">
+
+        <div class="form-group" >
+            <label for="name">City Name</label>
+            <input type="text" id="name" class="form-control" required [(ngModel)]="model.name" name="name" #name="ngModel">
+            <div [hidden]="name.valid || name.pristine"
+                 class="alert alert-danger">
+              Name is required
+            </div>
+            <input type="hidden" id="provinceId" class="form-control" required 
+            [(ngModel)]="model.provinceId" name="provinceId" #provinceId="ngModel">
+            <!-- <select class="form-control" id="power" required>
+              <option *ngFor="let pow of powers" [value]="pow">{{pow}}</option>
+            </select> -->
+            <button type="submit" class="btn btn-success" >Submit</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,7 @@
+<div class="container" *ngIf="universityModel">
+    <h4>{{universityModel.city.province.country.name}}</h4>
+    <h3>{{universityModel.city.province.name}}</h3>
+    <h2>{{universityModel.city.name}}</h2>
+    <h1>{{universityModel.name}}</h1>
+    <a [routerLink]="['/university/programs', universityModel.id ]" >Programs</a>
+</div>

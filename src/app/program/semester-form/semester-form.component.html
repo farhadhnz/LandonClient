@@ -1,0 +1,35 @@
+<div class="container">
+    <h2>Add Semester</h2>
+    <form (ngSubmit)="onSubmit()" #semesterForm="ngForm">
+
+        <div class="form-group" >
+            <label for="name">Semester Name</label>
+            <input type="text" id="name" class="form-control" required [(ngModel)]="model.name" name="name" #name="ngModel">
+            <div [hidden]="name.valid || name.pristine"
+                 class="alert alert-danger">
+              Name is required
+            </div>
+            <input type="date" id="deadline" class="form-control" required [(ngModel)]="model.deadline" name="deadline" #deadline="ngModel">
+            <div [hidden]="deadline.valid || deadline.pristine"
+                 class="alert alert-danger">
+              Deadline is required
+            </div>
+            <select id="season" class="form-control" required [(ngModel)]="model.season" name="season" #season="ngModel">
+                <option  value="Fall">Fall</option>
+                <option  value="Winter">Winter</option>
+                <option  value="Spring">Spring</option>
+                <option  value="Summer">Summer</option>
+            </select>
+            <div [hidden]="season.valid || season.pristine"
+                 class="alert alert-danger">
+                Season is required
+            </div>
+            <input type="hidden" id="programId" class="form-control" required 
+            [(ngModel)]="model.programId" name="programId" #programId="ngModel">
+            <!-- <select class="form-control" id="power" required>
+              <option *ngFor="let pow of powers" [value]="pow">{{pow}}</option>
+            </select> -->
+            <button type="submit" class="btn btn-success" >Submit</button>
+        </div>
+    </form>
+</div>
